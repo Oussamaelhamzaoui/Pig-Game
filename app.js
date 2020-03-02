@@ -14,9 +14,10 @@ init();
 
 document.querySelector('.btn-roll').addEventListener('click',function(){
 if (gamePlaying){
+    // random number
     var dice = Math.floor(Math.random()*6) +1;
 
-    var diceDOM = document.querySelector('.dice');
+    var diceDOM = document.querySelector('.dice');  //to not repeat the  document.querySelector everytime so we store it in a variable
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice +'.png';
 
@@ -51,14 +52,14 @@ document.querySelector('.btn-hold').addEventListener('click',function(){
 });
 
 function nextPlayer(){
-    activePlayer === 0 ? activePlayer = 1 :activePlayer = 0;
+    activePlayer === 0 ? activePlayer = 1 :activePlayer = 0; //equivalent to  if else statements
     roundScore = 0;
 
-    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-0').textContent = '0'; // (updating score) the current score is stacked from player to the other when we switch from player1 to player 2 so we need to initial the score at 0
     document.getElementById('current-1').textContent = '0';
 
-    document.querySelector('.player-0-panel').classList.toggle('active');
-    document.querySelector('.player-1-panel').classList.toggle('active');
+    document.querySelector('.player-0-panel').classList.toggle('active');  //replace(add and remove) toggle add the class if it's not their and if it's their to remove
+    document.querySelector('.player-1-panel').classList.toggle('active');  // classlist is used to access the classes that the element have
     document.querySelector('.dice').style.display = 'none';
 }
 
